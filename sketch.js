@@ -1,8 +1,23 @@
+//init objs
+let canvas;
+let h1;
+let userInput1, userInput2;
+let button;
+let gen = false;
+let q1 = "";
+let q2 = "";
+let q3 = "";
+let namep;
+let header = "haha";
+let testtext = "testtext";
+let input1, input2, input3;
+let params, params1, params2;
+
 // cross pattern
 let dim;
 let attlength;
 let tlength;
-let tSize = 2;
+let tSize = 12;
 let tAlph;
 let theShader;
 var myResults = [];
@@ -33,8 +48,17 @@ var particles2 = [];
 function setup() {
   //---------setup top
   //createCanvas(400,400);
-
-  createCanvas(640, 480);
+  input1 = createInput("");
+  input1.input(submit);
+  input2 = createInput("");
+  input2.input(submit);
+  input3 = createInput("");
+  input3.input(submit);
+  fill(240);
+  namep = createP("query testing");
+  button = createButton("Submit");
+  button.mousePressed(start);
+  canvas = createCanvas(640, 480);
 
   cb.setConsumerKey(consumerKey, consumerSecret);
   cb.setToken(token, tokenSecret);
@@ -60,24 +84,155 @@ function setup() {
   //    particles1.push(new Particle1());
   // }
 
-  // codebird
-  var params = {
+  // codebird params
+  params = {
     q: "room",
     result_type: "recent",
     count: 10
   };
 
-  var params1 = {
+  params1 = {
     q: "window",
     result_type: "recent",
     count: 10
   };
 
-  var params2 = {
+  params2 = {
     q: "door",
     result_type: "recent",
     count: 10
   };
+
+  // cb.__call("search_tweets", params, function(reply) {
+  //   var statuses = reply.statuses;
+  //   for (var i = 0; i < statuses.length; i++) {
+  //     var tweet = statuses[i];
+  //     if (!tweet.retweeted_status) {
+  //       //print(tweet.text);
+  //       //fill('#' + tweet.user.profile_background_color);
+
+  //       //  (255/i);
+
+  //       //let myResults = statuses;
+  //       tlength = statuses.length;
+  //       tAlph = tlength;
+  //       attlength = tlength;
+  //       myResults = tweet.text;
+  //       let words = tweet.text.split(" ");
+  //       console.log(words);
+  //       let hyphenated = words.join("-");
+  //       // text(tweet.text , 0, i * 120);
+  //     }
+  //   }
+  //   // print the max_id which helps if you want to grab pages of data
+  //   //print('max_id: ' + reply.search_metadata.max_id);
+  // });
+
+  // cb.__call("search_tweets", params1, function(reply) {
+  //   var statuses = reply.statuses;
+  //   for (var i = 0; i < statuses.length; i++) {
+  //     var tweet1 = statuses[i];
+  //     if (!tweet1.retweeted_status) {
+  //       //fill(255);
+
+  //       //let myResults = statuses;
+  //       myResults1 = tweet1.text;
+  //       //let words = tweet1.text.split(" ");
+  //       //console.log(words);
+  //       //let hyphenated = words.join("-")
+  //       // text(tweet.text , 0, i * 120);
+  //     }
+  //   }
+  //   // print the max_id which helps if you want to grab pages of data
+  //   //print('max_id: ' + reply.search_metadata.max_id);
+  // });
+
+  // cb.__call("search_tweets", params2, function(reply) {
+  //   var statuses = reply.statuses;
+  //   for (var i = 0; i < statuses.length; i++) {
+  //     var tweet2 = statuses[i];
+  //     if (!tweet2.retweeted_status) {
+  //       //print(tweet.text);
+  //       //fill('#' + tweet.user.profile_background_color);
+
+  //       //    fill(255/i);
+
+  //       //let myResults = statuses;
+  //       myResults2 = tweet2.text;
+  //       let words = tweet2.text.split(" ");
+  //       //console.log(words);
+  //       let hyphenated = words.join("-");
+  //       // text(tweet.text , 0, i * 120);
+  //     }
+  //   }
+  //   // print the max_id which helps if you want to grab pages of data
+  //   //print('max_id: ' + reply.search_metadata.max_id);
+  // });
+  /////////////////////////////////////////////////
+  // for (var i =0; i<50; i++){
+  //   particles.push(particle = new Particle());
+  // }
+  //
+  // for (var q =0; q<50; q++){
+  //   particles.push(particle = new Particle1());
+  // }
+
+  // for (var i =0; i<1; i++){
+  //   particles.push(particle = new Particle());
+  //   // particles.push(particle1 = new Particle1());
+  //   // particles.push(particle2 = new Particle2());
+  //
+  // }
+  //attractor = createVector(width/2, height/2);    //set cm
+  xim = createVector(1500, 900);
+  attractor1 = createVector(width - 150, height - 400);
+  attractor2 = createVector(mouseX, mouseY);
+  //background(random(255), random(255), random(255), random(100));
+  background(0);
+
+  //noLoop();
+  //console.log(tlength);
+
+  for (let i = 0; i < 10; i++) {
+    attractors.push(createVector(random(width), random(height)));
+  }
+} //---------setup
+
+function start() {
+  testtext = input1.value();
+  params.q = input1.value();
+  params1.q = input2.value();
+  params2.q = input3.value();
+  codebird();
+  gen = true;
+
+  // namep.html(input.value());
+}
+
+function submit() {
+  userInput = this.value();
+  console.log(typeof userInput, userInput);
+}
+
+function codebird() {
+  // codebird
+  // params = {
+  //   q: "room",
+  //   result_type: "recent",
+  //   count: 10
+  // };
+
+  // params1 = {
+  //   q: "window",
+  //   result_type: "recent",
+  //   count: 10
+  // };
+
+  // params2 = {
+  //   q: "door",
+  //   result_type: "recent",
+  //   count: 10
+  // };
 
   cb.__call("search_tweets", params, function(reply) {
     var statuses = reply.statuses;
@@ -95,7 +250,7 @@ function setup() {
         attlength = tlength;
         myResults = tweet.text;
         let words = tweet.text.split(" ");
-        console.log(words);
+        console.log(`Param1: ${myResults}`);
         let hyphenated = words.join("-");
         // text(tweet.text , 0, i * 120);
       }
@@ -113,6 +268,7 @@ function setup() {
 
         //let myResults = statuses;
         myResults1 = tweet1.text;
+        console.log(`Param2: ${tweet1.text}`);
         //let words = tweet1.text.split(" ");
         //console.log(words);
         //let hyphenated = words.join("-")
@@ -138,52 +294,16 @@ function setup() {
         let words = tweet2.text.split(" ");
         //console.log(words);
         let hyphenated = words.join("-");
+        console.log(`Param3: ${words}`);
         // text(tweet.text , 0, i * 120);
       }
     }
     // print the max_id which helps if you want to grab pages of data
     //print('max_id: ' + reply.search_metadata.max_id);
   });
-  /////////////////////////////////////////////////
-  // for (var i =0; i<50; i++){
-  //   particles.push(particle = new Particle());
-  // }
-  //
-  // for (var q =0; q<50; q++){
-  //   particles.push(particle = new Particle1());
-  // }
+}
 
-  // for (var i =0; i<1; i++){
-  //   particles.push(particle = new Particle());
-  //   // particles.push(particle1 = new Particle1());
-  //   // particles.push(particle2 = new Particle2());
-  //
-  // }
-  //attractor = createVector(width/2, height/2);    //set cm
-  xim = createVector(1500, 900);
-  attractor1 = createVector(width - 150, height - 400);
-  attractor2 = createVector(mouseX, mouseY);
-  //background(random(255), random(255), random(255), random(100));
-  background(10);
-
-  //noLoop();
-  console.log(tlength);
-
-  for (let i = 0; i < 10; i++) {
-    attractors.push(createVector(random(width), random(height)));
-  }
-} //---------setup
-
-function draw() {
-  //background(0);
-  //stroke(255);
-  //strokeWeight(4);
-  //drawGradient(width/2, height / 2);
-  console.log(tlength);
-
-  for (var i = 0; i < attractors.length; i++) {
-    //  point(attractors[i].x, attractors[i].y);
-  }
+function generate() {
   //point(attractors[i].x, attractors[i].y);        // draw attractor
 
   for (var i = 0; i < particles.length; i++) {
@@ -209,6 +329,7 @@ function draw() {
 
   //particle.attracted(attractor1);
   //particle.attracted(attractor2);
+  //drawing
   particle.update();
   particle1.update();
   particle2.update();
@@ -217,6 +338,22 @@ function draw() {
   particle1.show();
   particle2.show();
 }
+
+function draw() {
+  if (gen == true) {
+    generate();
+  } else return;
+
+  fill(200);
+  text(testtext, 20, 20);
+
+  //background(0);
+  //stroke(255);
+  //strokeWeight(4);
+  //drawGradient(width/2, height / 2);
+  // console.log(tlength);
+}
+//end of draw
 
 // for (var i =0; i<attractors.length; i++){
 //
@@ -261,10 +398,6 @@ class Particle {
   }
 
   show() {
-    //stroke(255);
-    //strokeWeight(4);
-    //point(this.pos.x, this.pos.y);
-
     var txt = myResults; //scope issue
     var txt1 = myResults1;
     var txt2 = myResults2;
@@ -272,12 +405,12 @@ class Particle {
     var tx1 = String(txt1);
     var tx2 = String(txt2);
     textSize(tSize);
-    //fill(255);
 
-    //noStroke();
     strokeWeight(1);
     //  textFont(font);
     fill(100, 230, 245, tAlph);
+    //fixed alpha
+    //fill(100, 230, 245, tAlpha);
     text(tx, this.pos.x, this.pos.y);
     // fill(100, 140, 245, 10);
     // text(tx1, this.pos.x-400, this.pos.y+300);
