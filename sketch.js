@@ -49,7 +49,7 @@ function setup() {
   //---------setup top
   //createCanvas(400,400);
   setUi();
-  canvas = createCanvas(640, 480);
+  canvas = createCanvas(720, 480);
 
   cb.setConsumerKey(consumerKey, consumerSecret);
   cb.setToken(token, tokenSecret);
@@ -190,6 +190,7 @@ function setup() {
 } //---------setup
 
 function setUi() {
+
   input1 = createInput("Input 1");
   input1.input(submit);
   input2 = createInput("Input 2");

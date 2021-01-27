@@ -7,4 +7,6 @@ body {
 }
 canvas {
   display: block;
+  margin-top: 1%;
+  margin: 2%;
 }
