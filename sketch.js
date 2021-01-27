@@ -256,7 +256,12 @@ function start() {
 }
 
 function clear() {
-  canvas.clear;
+  params.q = input1.value();
+  params1.q = input2.value();
+  params2.q = input3.value();
+  attractors.reset();
+  cb.reset();
+  canvas.reset();
   background(0);
   tAlpha = 0;
 }
@@ -397,7 +402,7 @@ function draw() {
   } else return;
 
   fill(200);
-  text(testtext, 20, 20);
+  //text(testtext, 20, 20);
 
   //background(0);
   //stroke(255);
