@@ -17,7 +17,7 @@ let params, params1, params2;
 let dim;
 let attlength;
 let tlength;
-let tSize = 5;
+let tSize = 8;
 let tAlph;
 let theShader;
 var myResults = [];
