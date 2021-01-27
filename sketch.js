@@ -2,7 +2,7 @@
 let canvas;
 let h1;
 let userInput1, userInput2;
-let button;
+let submitButton, clearButton;
 let gen = false;
 let q1 = "";
 let q2 = "";
@@ -56,8 +56,10 @@ function setup() {
   input3.input(submit);
   fill(240);
   namep = createP("query testing");
-  button = createButton("Submit");
-  button.mousePressed(start);
+  submitButton = createButton("Submit");
+  submitButton.mousePressed(start);
+  clearButton = createButton("Clear Canvas");
+  clearButton.mousePressed(clear);
   canvas = createCanvas(640, 480);
 
   cb.setConsumerKey(consumerKey, consumerSecret);
@@ -188,7 +190,7 @@ function setup() {
   attractor1 = createVector(width - 150, height - 400);
   attractor2 = createVector(mouseX, mouseY);
   //background(random(255), random(255), random(255), random(100));
-  background(0);
+  //background(0);
 
   //noLoop();
   //console.log(tlength);
@@ -207,6 +209,12 @@ function start() {
   gen = true;
 
   // namep.html(input.value());
+}
+
+function clear() {
+  canvas.clear;
+  background(0);
+  tAlpha = 0;
 }
 
 function submit() {
