@@ -62,6 +62,19 @@ function setup() {
   clearButton.mousePressed(clear);
   canvas = createCanvas(640, 480);
 
+  //Button styles
+  submitButton.style("background-color", "black");
+  submitButton.style("color", "white");
+  submitButton.style("border", "1px solid white");
+  submitButton.style("padding", "5px 24px");
+  submitButton.style("font-size", "12px");
+
+  clearButton.style("background-color", "black");
+  clearButton.style("color", "white");
+  clearButton.style("border", "1px solid white");
+  clearButton.style("padding", "5px 24px");
+  clearButton.style("font-size", "12px");
+
   cb.setConsumerKey(consumerKey, consumerSecret);
   cb.setToken(token, tokenSecret);
 
