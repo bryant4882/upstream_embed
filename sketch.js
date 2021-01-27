@@ -199,9 +199,9 @@ function setUi() {
   input3.input(submit);
   fill(240);
   namep = createP("");
-  submitButton = createButton("Submit");
+  submitButton = createButton("Generate");
   submitButton.mousePressed(start);
-  clearButton = createButton("Clear Canvas");
+  clearButton = createButton("Refresh");
   clearButton.mousePressed(clear);
 
   //input styles
