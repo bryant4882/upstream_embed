@@ -17,7 +17,7 @@ let params, params1, params2;
 let dim;
 let attlength;
 let tlength;
-let tSize = 12;
+let tSize = 5;
 let tAlph;
 let theShader;
 var myResults = [];
@@ -49,7 +49,7 @@ function setup() {
   //---------setup top
   //createCanvas(400,400);
   setUi();
-  canvas = createCanvas(1280 - 128 * 0.4, 480);
+  canvas = createCanvas(1280 - 128 * 0.4, 720);
 
   cb.setConsumerKey(consumerKey, consumerSecret);
   cb.setToken(token, tokenSecret);
