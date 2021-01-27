@@ -48,51 +48,8 @@ var particles2 = [];
 function setup() {
   //---------setup top
   //createCanvas(400,400);
-  input1 = createInput("Input 1");
-  input1.input(submit);
-  input2 = createInput("Input 2");
-  input2.input(submit);
-  input3 = createInput("Input 3");
-  input3.input(submit);
-  fill(240);
-  namep = createP("query testing");
-  submitButton = createButton("Submit");
-  submitButton.mousePressed(start);
-  clearButton = createButton("Clear Canvas");
-  clearButton.mousePressed(clear);
+  setUi();
   canvas = createCanvas(640, 480);
-
-  //input styles
-  input1.style("border", "1px solid white");
-  input1.style("background-color", "transparent");
-  input1.style("margin-right", "5%");
-  input1.style("margin-top", "2%");
-  input1.style("color", "white");
-
-  input2.style("border", "1px solid white");
-  input2.style("background-color", "transparent");
-  input2.style("margin-right", "5%");
-  input2.style("margin-top", "2%");
-  input2.style("color", "white");
-
-  input3.style("border", "1px solid white");
-  input3.style("background-color", "transparent");
-  input3.style("margin-right", "5%");
-  input3.style("margin-top", "2%");
-  input3.style("color", "white");
-
-  //Button styles
-  submitButton.style("background-color", "transparent");
-  submitButton.style("color", "white");
-  submitButton.style("border", "1px solid white");
-  submitButton.style("padding", "5px 24px");
-  submitButton.style("font-size", "12px");
-
-  clearButton.style("background-color", "transparent");
-  clearButton.style("color", "white");
-  clearButton.style("border", "1px solid white");
-  clearButton.style("padding", "5px 24px");
-  clearButton.style("font-size", "12px");
 
   cb.setConsumerKey(consumerKey, consumerSecret);
   cb.setToken(token, tokenSecret);
@@ -231,6 +188,61 @@ function setup() {
     attractors.push(createVector(random(width), random(height)));
   }
 } //---------setup
+
+function setUi() {
+  input1 = createInput("Input 1");
+  input1.input(submit);
+  input2 = createInput("Input 2");
+  input2.input(submit);
+  input3 = createInput("Input 3");
+  input3.input(submit);
+  fill(240);
+  namep = createP("query testing");
+  submitButton = createButton("Submit");
+  submitButton.mousePressed(start);
+  clearButton = createButton("Clear Canvas");
+  clearButton.mousePressed(clear);
+
+  //input styles
+  input1.style("border", "1px solid white");
+  input1.style("background-color", "transparent");
+  input1.style("margin-right", "5%");
+  input1.style("margin-top", "2%");
+  input1.style("color", "white");
+  input1.style("margin-left", "2%");
+
+  input2.style("border", "1px solid white");
+  input2.style("background-color", "transparent");
+  input2.style("margin-right", "5%");
+  input2.style("margin-top", "2%");
+  input2.style("color", "white");
+  input2.style("margin-left", "2%");
+
+  input3.style("border", "1px solid white");
+  input3.style("background-color", "transparent");
+  input3.style("margin-right", "5%");
+  input3.style("margin-top", "2%");
+  input3.style("margin-left", "2%");
+  input3.style("color", "white");
+
+  //Button styles
+  submitButton.style("background-color", "transparent");
+  submitButton.style("color", "white");
+  submitButton.style("border", "1px solid white");
+  submitButton.style("padding", "5px 24px");
+  submitButton.style("margin-left", "2%");
+  submitButton.style("font-size", "12px");
+  submitButton.style("transition-duration", "0.4s");
+  submitButton.style("transition-duration", "0.4s");
+
+  clearButton.style("background-color", "transparent");
+  clearButton.style("color", "white");
+  clearButton.style("border", "1px solid white");
+  clearButton.style("padding", "5px 24px");
+  clearButton.style("font-size", "12px");
+  clearButton.style("margin-left", "2%");
+  clearButton.style("transition-duration", "0.4s");
+}
 
 function start() {
   testtext = input1.value();
