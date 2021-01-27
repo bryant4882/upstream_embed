@@ -197,7 +197,7 @@ function setUi() {
   input3 = createInput("Input 3");
   input3.input(submit);
   fill(240);
-  namep = createP("query testing");
+  namep = createP("");
   submitButton = createButton("Submit");
   submitButton.mousePressed(start);
   clearButton = createButton("Clear Canvas");
